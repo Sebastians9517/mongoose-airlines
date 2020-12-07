@@ -13,8 +13,8 @@
   <!-- start destination list -->
   <div>Destination:</div>
   <ul>
-    <%- flight.destination.map(p =>
-      `<li>${d.location}`
+    <%- flight.destinations.map(d =>
+      `<li>${d.location}</li>`
     ).join('') %>
   </ul>
   <!-- end destination list -->
