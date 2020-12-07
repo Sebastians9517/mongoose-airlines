@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+
+
+<h1>show page</h1>
+<h1> Flights</h1>
+<% flights.forEach((f) => { %>
+    <td><%= f.airline %> </td>
+    <td><%= f.airport %> </td>
+    <td><%= f.flightNo %></td>
+    <td><%= f.departs %></td>
+<% }) %>
+
+
+<%- include('../partials/footer') %>
