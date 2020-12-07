@@ -1,4 +1,3 @@
-
 <%- include('../partials/header') %>
 <section id="show-page">
     <div>Airline: </div>
@@ -9,26 +8,24 @@
     <div><%= flight.flightNo %></div>
     <div>Departure: </div>
     <div><%= flight.departs %></div>
-
   <!-- start destination list -->
   <div>Destination:</div>
   <ul>
     <%- flight.destinations.map(d =>
-      `<li>${d.location}</li>`
+      `<li>${d.destination}</li>`
     ).join('') %>
   </ul>
   <!-- end destination list -->
 </section>
 <!-- add to destination form below this comment -->
 <form id="add-loc-to-destination" action="/flights/<%= flight._id %>/destinations" method="POST">
-  <select name="destinationId">
+  <select name="destination">
     <%- destinations.map(d =>
-      `<option value="${d._id}">${d.location}</option>`
+      `<option value="${d._id}">${d.destination}</option>`
     ).join('') %>
   </select>
   <button type="submit">Add to destination</button>
 </form>
-
   </section>
   <br><br><h2>Tickets</h2>
   <form id="add-ticket" method="POST"

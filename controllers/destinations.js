@@ -14,19 +14,10 @@ function newDestination(req, res) {
 }
 
 
-// function newDestination(req, res) {
-//   Destination.find({})
-//   .then((destinations) => {
-//     res.render('destinations/new', {title: 'Add destination', destinations})
-//   })
-//   .catch((err) => {
-//     console.log(err)
-//   })
-// }
-
 function addToDestinations(req, res) {
+    console.log(req.body.destinationId, 'destinadionID')
     Flight.findById(req.params.id, function(err, flight) {
-      flight.cast.push(req.body.destinationId)
+      flight.destinations.push(req.body.destination)
       flight.save(function(err) {
         res.redirect(`/flights/${flight._id}`)
       })

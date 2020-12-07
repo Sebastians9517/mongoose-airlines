@@ -44,8 +44,9 @@ module.exports = {
 
 function show(req, res) {
     Flight.findById(req.params.id)
-    .populate('location').exec((err, flight) => {
-      Destination.find({_id: {$nin: flight.location}}, (err, destinations) => {
+    .populate('destinations').exec((err, flight) => {
+      Destination.find({_id: {$nin: flight.destinations}}, (err, destinations) => {
+          console.log(flight, 'flight console')
         res.render('flights/show', {title: 'flight Detail', flight, destinations})
       })
     })
