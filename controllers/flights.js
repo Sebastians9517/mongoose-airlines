@@ -4,7 +4,8 @@ module.exports = {
     new: newFlight,
     create,
     index,
-    delete: deleteFlight
+    delete: deleteFlight,
+    show
 }
 
  function newFlight(req, res) {
@@ -12,8 +13,6 @@ module.exports = {
  };
 
  function create(req, res) {
-     console.log('create')
-     console.log(req.body, 'req.body')
     const flight = new Flight(req.body)
     flight.save(function(err, flight) {
         res.redirect('/flights') //, {title: 'New flight', flight})
@@ -39,5 +38,11 @@ module.exports = {
      console.log('delete', deleteFlight)
      Flight.findByIdAndDelete(req.params.id, (err, flight) => {
          res.redirect('/flights')
+     })
+ }
+
+ function show(req, res) {
+     Flight.findById(req.params.id, (err, flight) => {
+         res.render('flights/show', {title: "Flight details", flight})
      })
  }

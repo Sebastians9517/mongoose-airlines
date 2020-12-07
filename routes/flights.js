@@ -6,7 +6,8 @@ const flightsCtrl = require('../controllers/flights')
 router.get('/new', flightsCtrl.new);
 router.post('/', flightsCtrl.create);
 router.get('/', flightsCtrl.index);
-router.delete('/:id', flightsCtrl.delete)
+router.delete('/:id', flightsCtrl.delete);
+router.get('/:id', flightsCtrl.show);
 
 
 module.exports = router;
