@@ -1,6 +1,7 @@
 const Flight = require('../models/flight');
 const Destination = require('../models/destination');
 
+
 module.exports = {
     new: newFlight,
     create,
@@ -14,18 +15,14 @@ module.exports = {
  };
 
  function create(req, res) {
+     for (let key in req.body) {
+         if (req.body[key] === '')
+            delete req.body[key]
+     }
     const flight = new Flight(req.body)
     flight.save(function(err, flight) {
-        res.redirect('/flights') //
+        res.redirect('/flights')
     })
-    // flight.save((err) => {
-    //     if (err) {
-    //         console.log(err);
-    //         return res.render('flights/new', {err});
-    //     }
-    //     console.log(flight);
-    //     res.redirect(`/flights/${flights._id}`);
-    // });
  };
 
 
