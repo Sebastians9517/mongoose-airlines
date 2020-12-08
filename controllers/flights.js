@@ -16,7 +16,7 @@ module.exports = {
  function create(req, res) {
     const flight = new Flight(req.body)
     flight.save(function(err, flight) {
-        res.redirect('/flights') //, {title: 'New flight', flight})
+        res.redirect('/flights') //
     })
     // flight.save((err) => {
     //     if (err) {
