@@ -1,14 +1,11 @@
-// var express = require('express');
-// var router = express.Router();
-// const ticketsCtrl = require('../controllers/tickets');
-
-// router.post('/flights/:id/tickets', ticketsCtrl.create);
-
-
-// module.exports = router;
 
 const express = require('express')
 const router = express.Router()
 const ticketsCtrl = require('../controllers/tickets')
-router.post('/flights/:id/tickets', ticketsCtrl.create)
+
+
+router.post('/flights/:id/tickets', ticketsCtrl.create);
+router.delete('/:ticketId/:flightId', ticketsCtrl.deleteTicket);
+
+
 module.exports = router
