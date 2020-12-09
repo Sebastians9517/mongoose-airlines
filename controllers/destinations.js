@@ -15,7 +15,6 @@ function newDestination(req, res) {
 
 
 function addToDestinations(req, res) {
-    console.log(req.body.destinationId, 'destinadionID')
     Flight.findById(req.params.id, function(err, flight) {
       flight.destinations.push(req.body.destination)
       flight.save(function(err) {

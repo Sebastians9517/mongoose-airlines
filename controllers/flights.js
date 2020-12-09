@@ -33,7 +33,6 @@ module.exports = {
  }
 
  function deleteFlight(req, res) {
-     console.log('delete', deleteFlight)
      Flight.findByIdAndDelete(req.params.id, (err, flight) => {
          res.redirect('/flights')
      })
@@ -43,7 +42,6 @@ function show(req, res) {
     Flight.findById(req.params.id)
     .populate('destinations').exec((err, flight) => {
       Destination.find({_id: {$nin: flight.destinations}}, (err, destinations) => {
-          console.log(flight, 'flight console')
         res.render('flights/show', {title: 'flight Detail', flight, destinations})
       })
     })
